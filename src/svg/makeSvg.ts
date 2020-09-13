@@ -8,8 +8,12 @@ import { loadTemplate } from './loadTemplate'
 
 export const makeSvg = async (
   svgTemplatePath: string,
-  data: SpotifyCurrentlyPlaying,
+  status: string,
+  track?: SpotifyTrack,
 ) => {
+  if (!track)
+    return '<svg xmlns="http://www.w3.org/2000/svg" width="1" height="1"/>'
+
   const barCount = 84
   const bars = new Array(barCount)
     .fill(null)
@@ -17,33 +21,10 @@ export const makeSvg = async (
     .join('')
   const css = barGen(barCount)
 
-  let status = ''
-  let item: SpotifyTrack = null
-
-  if (!data || data.item === 'None') {
-    // if we wanted to show the bars if there are no songs being played
-    // contentBar = ""
-    status = 'Was Playing:'
-
-    const recentPlays = await getRecentlyPlayed()
-
-    if (!recentPlays) {
-      return ''
-    }
-
-    const randomIndex = (Math.random() * (recentPlays.items.length - 1)) | 0
-    const randomItem = recentPlays.items[randomIndex]
-
-    item = randomItem && randomItem.track
-  } else {
-    item = data.item
-    status = 'Vibing To:'
-  }
-
   // images sizes: 640px, 300px, 64px
-  const image = await loadImageBase64(item.album.images[1].url)
-  const artist = htmlEntities(item.artists[0].name)
-  const song = htmlEntities(item.name)
+  const image = await loadImageBase64(track.album.images[1].url)
+  const artist = htmlEntities(track.artists[0].name)
+  const song = htmlEntities(track.name)
 
   return loadTemplate(svgTemplatePath, {
     bars,

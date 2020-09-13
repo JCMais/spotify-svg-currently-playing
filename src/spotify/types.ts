@@ -26,4 +26,5 @@ export interface SpotifyRecentlyPlayed {
 
 export interface SpotifyCurrentlyPlaying {
   item: SpotifyTrack | 'None'
+  currently_playing_type: 'track' | 'episode'
 }
