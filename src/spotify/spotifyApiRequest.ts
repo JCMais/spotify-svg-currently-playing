@@ -35,7 +35,7 @@ export const spotifyApiRequest = async <Result extends any>({
   headers = [],
   bearerToken,
   extraOptions,
-}: SpotifyApiRequestOptions): Promise<Result> => {
+}: SpotifyApiRequestOptions): Promise<Result | null> => {
   const httpHeader = [
     bearerToken ? `Authorization: Bearer ${bearerToken}` : '',
     ...headers,

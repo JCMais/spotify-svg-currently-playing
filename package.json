@@ -29,7 +29,7 @@
     "build": "yarn build:before && netlify-lambda build --config ./webpack.functions.js src && yarn build:after",
     "serve:raw": "yarn build:before && netlify-lambda serve --config ./webpack.functions.js src",
     "serve": "dotenv yarn serve:raw",
-    "ts-check": "tsc --noEmit --lib es2017 ./src/*.ts"
+    "type-check": "tsc --noEmit --lib es2017 ./src/handler.ts"
   },
   "dependencies": {
     "dotenv": "^8.2.0",

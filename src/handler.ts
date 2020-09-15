@@ -19,18 +19,16 @@ export const handler: Handler = async (_event, _context) => {
   let item: SpotifyTrack = null
 
   if (!nowPlaying || nowPlaying.item === 'None') {
-    status = 'Was Playing:'
-
     const recentPlays = await getRecentlyPlayed()
 
-    if (!recentPlays) {
-      return ''
+    if (recentPlays) {
+      status = 'Was Playing:'
+
+      const randomIndex = (Math.random() * (recentPlays.items.length - 1)) | 0
+      const randomItem = recentPlays.items[randomIndex]
+
+      item = randomItem && randomItem.track
     }
-
-    const randomIndex = (Math.random() * (recentPlays.items.length - 1)) | 0
-    const randomItem = recentPlays.items[randomIndex]
-
-    item = randomItem && randomItem.track
   }
 
   const svg = await makeSvg(svgTemplateFilePath, status, item)

@@ -11,7 +11,7 @@ export const getCurrentlyPlaying = async () => {
     bearerToken,
   })
 
-  if (data.currently_playing_type !== 'track') return null
+  if (data && data.currently_playing_type !== 'track') return null
 
   return data
 }

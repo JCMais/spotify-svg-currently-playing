@@ -1,4 +1,4 @@
-import querystring from 'querystring'
+import * as querystring from 'querystring'
 
 import { refreshToken } from './config'
 import { spotifyApiRequest } from './spotifyApiRequest'
