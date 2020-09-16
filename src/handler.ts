@@ -31,8 +31,6 @@ export const handler: Handler = async (_event, _context) => {
     }
   }
 
-  console.log(nowPlaying && nowPlaying.item)
-
   const svg = await makeSvg(svgTemplateFilePath, status, item)
 
   return {
