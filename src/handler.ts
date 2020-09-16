@@ -16,7 +16,7 @@ export const handler: Handler = async (_event, _context) => {
   const nowPlaying = await getCurrentlyPlaying()
 
   let status = 'Vibing To'
-  let item: SpotifyTrack = null
+  let item: SpotifyTrack = nowPlaying?.item !== 'None' ? nowPlaying.item : null
 
   if (!nowPlaying || nowPlaying.item === 'None') {
     const recentPlays = await getRecentlyPlayed()
@@ -30,6 +30,8 @@ export const handler: Handler = async (_event, _context) => {
       item = randomItem && randomItem.track
     }
   }
+
+  console.log(nowPlaying && nowPlaying.item)
 
   const svg = await makeSvg(svgTemplateFilePath, status, item)
 
