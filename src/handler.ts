@@ -16,7 +16,8 @@ export const handler: Handler = async (_event, _context) => {
   const nowPlaying = await getCurrentlyPlaying()
 
   let status = 'Vibing To'
-  let item: SpotifyTrack = nowPlaying?.item !== 'None' ? nowPlaying.item : null
+  let item: SpotifyTrack =
+    !!nowPlaying?.item && nowPlaying.item !== 'None' ? nowPlaying.item : null
 
   if (!nowPlaying || nowPlaying.item === 'None') {
     const recentPlays = await getRecentlyPlayed()
