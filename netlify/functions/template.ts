@@ -1,19 +1,12 @@
-<svg width="480" height="133" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+// SVG template. Placeholders are ::name:: and are filled by makeSvg in handler.mts.
+// Original SVG by @novatorem (https://github.com/novatorem/novatorem).
+export const template = `<svg width="480" height="133" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
   <foreignObject width="480" height="133">
       <div xmlns="http://www.w3.org/1999/xhtml" class="container">
           <style>
               .main {
-                  /*margin-top: 40px;*/
                   display: flex;
               }
-              .currentStatus {
-                  float: left;
-                  font-size: 24px;
-                  position: static;
-                  margin-top: -5px;
-                  margin-left: 10px;
-              }
-              
               .container {
                   border-radius: 5px;
                   padding: 10px 10px 10px 0px;
@@ -28,12 +21,12 @@
               }
               .song {
                   color: #666;
-                  overflow:hidden;
+                  overflow: hidden;
                   margin-top: 3px;
                   font-size: 24px;
                   text-align: center;
-                  white-space:nowrap;
-                  text-overflow:ellipsis;
+                  white-space: nowrap;
+                  text-overflow: ellipsis;
               }
               .artist {
                   color: #b3b3b3;
@@ -62,11 +55,9 @@
                   background: #1DB954cc;
                   animation: sound 0ms -800ms linear infinite alternate;
               }
-              
               div {
                   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji;
               }
-              
               @keyframes sound {
                   0% {
                       height: 3px;
@@ -80,14 +71,12 @@
               ::css::
           </style>
 
-          <!-- <div class="currentStatus">{{status}}</div> -->
-
           <div class="main">
-              <a class="art" href="{}" target="_blank">
+              <div class="art">
                   <center>
-                      <img src="data:image/png;base64, ::image::" class="cover" />
+                      <img src="data:image/jpeg;base64,::image::" class="cover" />
                   </center>
-              </a>
+              </div>
 
               <div class="content">
                   <div class="song">::song::</div>
@@ -98,4 +87,4 @@
 
       </div>
   </foreignObject>
-</svg>
+</svg>`

@@ -1,5 +1,13 @@
-# example netlify.toml
 [build]
-  command = "yarn build"
-  functions = "lambda-built"
-  publish = "build"
+  command = "pnpm install --frozen-lockfile"
+  publish = "public"
+
+[build.environment]
+  NODE_VERSION = "26"
+
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
+  # native addon: keep it out of the bundle and ship its files alongside
+  external_node_modules = ["node-libcurl"]
+  included_files = ["node_modules/node-libcurl/**"]

@@ -1,7 +1,5 @@
 lambda-built/
 node_modules/
-
 .env
-
-# Local Netlify folder
 .netlify
+out.svg

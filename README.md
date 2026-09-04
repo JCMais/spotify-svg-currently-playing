@@ -5,16 +5,17 @@ This will return a SVG that can be used to display what you are playing currentl
 All credits for the original idea (and svg code) goes to [@novatorem](https://github.com/novatorem/novatorem), I just converted it to a JS/TS project using Netlify Functions.
 
 
+It is a single Netlify Function (`netlify/functions/handler.mts`) with no build step and no dependencies: native `fetch`, Node 26.
+
 ## Setup
 
-1. Fork this
-2. Run: `yarn`
-3. Run: `yarn netlify init`
-4. Setup your application on Spotify (read the [original instructions here](https://github.com/novatorem/novatorem/blob/16c6bb64572dcfc61fb759c5fcc8a7972306f219/SetUp.md))
-5. Add the environment variables on Netlify - See the .env.sample
-6. Deploy
-7. ...?
-8. Profit
+1. Fork this and create a Netlify site from it (the `netlify.toml` already points at the function).
+2. Create an app in the [Spotify developer dashboard](https://developer.spotify.com/dashboard) with Web API enabled and `http://127.0.0.1:8888/callback` as a redirect URI.
+3. Run `SPOTIFY_CLIENT_ID=... SPOTIFY_SECRET_ID=... node scripts/get-refresh-token.mjs` and approve the consent page; it prints `SPOTIFY_REFRESH_TOKEN`.
+4. Add the three environment variables on Netlify (see `.env.sample`) and deploy.
+5. Embed `https://<your-site>.netlify.app/.netlify/functions/handler` as an image.
+
+To try it locally: `SPOTIFY_CLIENT_ID=... SPOTIFY_SECRET_ID=... SPOTIFY_REFRESH_TOKEN=... node scripts/run-local.mjs` writes `out.svg`.
 
 ## Getting a new refresh token
 
