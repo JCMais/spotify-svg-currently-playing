@@ -15,3 +15,13 @@ All credits for the original idea (and svg code) goes to [@novatorem](https://gi
 6. Deploy
 7. ...?
 8. Profit
+
+## Getting a new refresh token
+
+Spotify revokes refresh tokens now and then (rotated secret, app removed, inactive
+development-mode app). When the function starts answering 502 with
+`Invalid status code from Spotify: 400`, mint a new one:
+
+1. In the Spotify developer dashboard, add `http://127.0.0.1:8888/callback` to the app's Redirect URIs and make sure Web API is enabled.
+2. Run `SPOTIFY_CLIENT_ID=... SPOTIFY_SECRET_ID=... node scripts/get-refresh-token.mjs`, approve the consent page, and copy the token it prints.
+3. Set `SPOTIFY_REFRESH_TOKEN` on Netlify and trigger a deploy.
