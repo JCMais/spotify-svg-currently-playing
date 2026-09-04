@@ -8,8 +8,15 @@
     "rewriteRelativeImportExtensions": true,
     "noEmit": true,
     "skipLibCheck": true,
-    "types": ["node"],
-    "lib": ["ES2023", "DOM"]
+    "types": [
+      "node"
+    ],
+    "lib": [
+      "ES2023",
+      "DOM"
+    ]
   },
-  "include": ["netlify/functions/**/*"]
+  "include": [
+    "netlify/**/*"
+  ]
 }

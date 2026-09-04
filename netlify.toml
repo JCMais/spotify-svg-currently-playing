@@ -3,7 +3,9 @@
   publish = "public"
 
 [build.environment]
-  NODE_VERSION = "26"
+  # Netlify Functions run on AWS Lambda, whose newest Node runtime is 24. The build must
+  # use the same major so node-libcurl's prebuilt binary matches the runtime ABI.
+  NODE_VERSION = "24"
 
 [functions]
   directory = "netlify/functions"

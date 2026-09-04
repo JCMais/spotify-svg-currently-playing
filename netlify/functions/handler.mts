@@ -4,7 +4,7 @@
 import { existsSync } from 'node:fs'
 import { curly, type CurlyOptions } from 'node-libcurl'
 
-import { template } from './template.ts'
+import { template } from '../lib/template.ts'
 
 const { SPOTIFY_CLIENT_ID, SPOTIFY_SECRET_ID, SPOTIFY_REFRESH_TOKEN, CURL_CA_BUNDLE } = process.env
 
